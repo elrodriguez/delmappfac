@@ -1,0 +1,176 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/*
+    Created on : 07/10/2018, 03:57:06 PM
+    Author     : elmer
+*/
+.bitcombotree{
+    position: relative;
+}
+.bitcombotree-input{
+    width:100%;
+    height:38px;
+    padding:6px 12px;
+    font-size:14px;
+    line-height:1.42857143;
+    color:#555;
+    background-color:#fff;
+    background-image:none;
+    border:1px solid #ccc;
+    border-radius:0;
+    position: relative;
+    border-radius: 4px;
+}
+.bitcombotree-input .icon{
+    width: 32px;
+    height: 36px;
+    background: transparent;
+    top: 0px;
+    right: 0px;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.bitcombotree-body{
+    width: 100%;
+    height: auto;
+    background-color:#fff;
+    background-image: none;
+    border:1px solid #ccc;
+    margin-top: 2px;
+    position: absolute;
+    z-index: 9999999;
+    border-radius: 4px;
+    padding: 10px;
+}
+.bitcombotree-body-padding{
+    height: auto;
+    max-height: 340px;
+    overflow-y: auto;
+}
+.bitcombotree-body ul{
+    list-style: none;
+}
+
+.bitcombotree-body input {
+    position: absolute;
+    clip: rect(0, 0, 0, 0);
+}
+
+.bitcombotree-body input ~ ul { display: none; }
+
+.bitcombotree-body input:checked ~ ul { display: block; }
+
+/* ————————————————————–
+  Tree rows
+*/
+.bitcombotree-body li {
+    line-height: 1.2;
+    position: relative;
+    padding: 0 0 1em 1em;
+}
+
+.bitcombotree-body ul li { padding: 1em 0 0 1em; }
+
+.bitcombotree-body > li:last-child { padding-bottom: 0; }
+
+/* ————————————————————–
+  Tree labels
+*/
+.tree_label {
+    position: relative;
+    display: inline-block;
+    background: #fff;
+}
+
+label.tree_label {
+    cursor: pointer;
+}
+
+label.tree_label:hover { color: #666; }
+
+label.tree_label:before {
+    background: #3276b1;
+    color: #fff;
+    position: relative;
+    z-index: 1;
+    float: left;
+    margin: 0 1em 0 -2em;
+    width: 1em;
+    height: 1em;
+    border-radius: 1em;
+    content: '+';
+    text-align: center;
+    line-height: .9em;
+}
+
+:checked ~ label.tree_label:before { content: '–'; }
+
+.bitcombotree-body li:before {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -.5em;
+    display: block;
+    width: 0;
+    border-left: 1px solid #ccc;
+    content: "";
+}
+
+.tree_label:after {
+    position: absolute;
+    top: 0;
+    left: -1.5em;
+    display: block;
+    height: 0.5em;
+    width: 1em;
+    border-bottom: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+    border-radius: 0 0 0 .3em;
+    content: '';
+}
+
+label.tree_label:after { border-bottom: 0; }
+
+:checked ~ label.tree_label:after {
+    border-radius: 0 .3em 0 0;
+    border-top: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    border-bottom: 0;
+    border-left: 0;
+    bottom: 0;
+    top: 0.5em;
+    height: auto;
+}
+
+.bitcombotree-body li:last-child:before {
+    height: 1em;
+    bottom: auto;
+}
+
+.bitcombotree-body > li:last-child:before { display: none; }
+
+.tree_custom {
+    display: block;
+    background: #eee;
+    padding: 1em;
+    border-radius: 0.3em;
+}
+
+.tree_active {
+    cursor:pointer;
+    font-family: sans-serif;
+    font-size: 100%;
+    color:#000;
+    font-weight:bold;
+}
+.tree_inactive{
+    cursor:pointer;
+    font-family: sans-serif;
+    font-size: 100%;
+    font-style: italic;
+}

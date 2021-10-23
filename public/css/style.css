@@ -1,0 +1,35 @@
+.btn-sm-er{
+    padding: .25rem .5rem;
+    font-size: .875rem;
+    line-height: 1.5;
+    border-radius: .2rem;
+}
+.custom-scroll-two {
+    height: 100px;
+  overflow: hidden;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+}
+.custom-scroll-two::-webkit-scrollbar-track-piece {
+    background-color: transparent;
+}
+.custom-scroll-two::-webkit-scrollbar-thumb:vertical{
+    background-color: #666;
+}
+.custom-scroll-two::-webkit-scrollbar {
+    height: 4px;
+    width: 4px;
+}
+.custom-scroll-two::-webkit-scrollbar-corner {
+    width: 40px;
+}
+.custom-scroll-two::-webkit-scrollbar-thumb:vertical {
+    background-color: #666;
+}
+.invalid-feedback-2{
+    font-size: 0.6875rem;
+    margin-top: 0.325rem;
+    width: 100%;
+    color: #fd3995;
+}
+
