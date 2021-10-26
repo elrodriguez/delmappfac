@@ -541,7 +541,7 @@ class Billing
     public function onlySenderXmlSignedBill()
     {
         $res = $this->senderXmlSigned();
-  
+
         if($res->isSuccess()) {
             $cdrResponse = $res->getCdrResponse();
             $this->uploadFile($res->getCdrZip(), 'cdr');
