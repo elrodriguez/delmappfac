@@ -261,26 +261,26 @@ class PermissionsSeeder extends Seeder
 
         $roleSuperAdmin = Role::create(['name' => 'SuperAdmin']);
         $roleAdmin = Role::create(['name' => 'Administrador']);
-        $roleTeacher = Role::create(['name' => 'Docente']);
-        $roleStudent = Role::create(['name' => 'Alumno']);
+        //$roleTeacher = Role::create(['name' => 'Docente']);
+        //$roleStudent = Role::create(['name' => 'Alumno']);
         //$roleUser = Role::create(['name' => 'Public']);
-        //$roleSeller= Role::create(['name' => 'Vendedor']);
+        $roleSeller= Role::create(['name' => 'Vendedor']);
         //$roleCliente= Role::create(['name' => 'Cliente']);
 
         $roleSuperAdmin->givePermissionTo('configuracion');
-        $roleSuperAdmin->givePermissionTo('academic');
+        //$roleSuperAdmin->givePermissionTo('academic');
         $roleSuperAdmin->givePermissionTo('rrhh');
-        // $roleSuperAdmin->givePermissionTo('logistic');
-        // $roleSuperAdmin->givePermissionTo('market');
+        $roleSuperAdmin->givePermissionTo('logistic');
+        $roleSuperAdmin->givePermissionTo('market');
         // $roleSuperAdmin->givePermissionTo('soporte_tecnico');
 
         $roleSuperAdmin->syncPermissions($permissions_array);
         $roleAdmin->syncPermissions($permissions_array);
-        $roleTeacher->givePermissionTo('academic');
-        $roleTeacher->syncPermissions($permissions_teacher);
-        $roleStudent->givePermissionTo('academic');
-        $roleStudent->syncPermissions($permissions_student);
-        //$roleSeller->givePermissionTo('market');
+        //$roleTeacher->givePermissionTo('academic');
+        //$roleTeacher->syncPermissions($permissions_teacher);
+        //$roleStudent->givePermissionTo('academic');
+        //$roleStudent->syncPermissions($permissions_student);
+        $roleSeller->givePermissionTo('market');
 
         //$roleUser->givePermissionTo($permissions_normal);
 
