@@ -80,7 +80,7 @@ class DocumentCreateForm extends Component
         $this->value_icbper = Parameter::where('id_parameter','PRT006ICP')->value('value_default');
         $this->igv = (int) Parameter::where('id_parameter','PRT002IGV')->value('value_default');
         $this->warehouse_id = Warehouse::where('establishment_id',Auth::user()->establishment_id)->first()->id;
-        
+
         $activity = new Activity;
         $activity->causedBy(Auth::user());
         $activity->routeOn(route('market_sales_document_create'));
@@ -203,15 +203,15 @@ class DocumentCreateForm extends Component
                     ]);
                 }
             }
-    
+
             $total_amount = 0;
-    
+
             if ($this->payment_method_types > 0) {
                 foreach($this->payment_method_types as $key => $val){
                     $total_amount = $total_amount + $val['amount'];
                 }
             }
-    
+
             if($this->total == $total_amount){
                 $this->store();
             }else{
@@ -260,7 +260,7 @@ class DocumentCreateForm extends Component
             'operation_type_id' => '0101',
             'date_of_due' => $date_of_due
         ];
-
+        $this->total_taxes = $this->total_igv;
         $inputDocument = [
             'user_id' => Auth::id(),
             'external_id' => $this->external_id,
@@ -317,14 +317,22 @@ class DocumentCreateForm extends Component
             $billing->updateQr();
             $billing->createPdf();
             $billing->senderXmlSignedBill();
+            $result_invoice = $billing->getResponse();
         } catch (Exception $e) {
             dd($e->getMessage());
         }
-        
+
 
         Serie::where('id',$this->serie_id)->increment('correlative');
         $this->selectCorrelative($this->serie_id);
         $document_old_id = Document::max('id');
+        if($result_invoice['sent']){
+            Document::where('id', $document_old_id)->update([
+                'has_xml' => '1',
+                'has_pdf' => '1',
+                'has_cdr' => '1'
+            ]);
+        }
         $user = Auth::user();
         $activity = new Activity;
         $activity->modelOn(Document::class,$document_old_id);
@@ -399,7 +407,8 @@ class DocumentCreateForm extends Component
 
                 $unit_value = ($value['total_value']/$value['quantity']) / (1 + $value['percentage_igv'] / 100);
                 $total_value_partial = $unit_value * $value['quantity'];
-                $total_taxes = $value['total_value'] - $total_value_partial;
+                //$total_taxes = $value['total_value'] - $total_value_partial;
+                $total_taxes = $total_igv;
                 $this->box_items[$key]['total_igv'] = $value['total_value'] - $total_value_partial;
                 $this->box_items[$key]['total_base_igv'] = $total_value_partial;
                 $total_value = $total_value - $value['total_value'];
@@ -445,10 +454,10 @@ class DocumentCreateForm extends Component
         $success = true;
         $showmsg = false;
         $msg = '';
-        
+
         if($key === false){
             if($this->item_id){
-                
+
                 $item = Item::where('id',$this->item_id)->first()->toArray();
                 if($exists_stock <= $item['stock_min']){
 
@@ -456,7 +465,7 @@ class DocumentCreateForm extends Component
                     $success = true;
                     $msg = Lang::get('messages.msg_product_about_out');
                 }
-                
+
                 if($exists_stock <= 0 ){
                     $success = false;
                     $showmsg = true;
@@ -469,17 +478,17 @@ class DocumentCreateForm extends Component
                     $currencyTypeIdActive = 'PEN';
                     $exchangeRateSale = 0.01;
                     $currency_type_id_old = $item['currency_type_id'];
-    
+
                     if ($currency_type_id_old === 'PEN' && $currency_type_id_old !== $currencyTypeIdActive){
                         $unit_price = $unit_price / $exchangeRateSale;
                     }
-    
+
                     if ($currencyTypeIdActive === 'PEN' && $currency_type_id_old !== $currencyTypeIdActive){
                         $unit_price = $unit_price * $exchangeRateSale;
                     }
-    
+
                     $affectation_igv_type = AffectationIgvType::where('id',$item['sale_affectation_igv_type_id'])->first()->toArray();
-    
+
                     $data = [
                         'item_id'=> $item['id'],
                         'item' => json_encode($item),
@@ -508,11 +517,11 @@ class DocumentCreateForm extends Component
                         'total_charge' => 0,
                         'total' => 0
                     ];
-    
+
                     $data = $this->calculateRowItem($data,$currencyTypeIdActive, $exchangeRateSale);
-    
+
                     array_push($this->box_items,$data);
-    
+
                     $this->payment_method_types[0] =[
                         'method' => '01',
                         'destination' => 'cash',
@@ -524,7 +533,7 @@ class DocumentCreateForm extends Component
                 }
             }
         }
-       
+
 
         $this->dispatchBrowserEvent('response_clear_select_products_alert',['showmsg' => $showmsg,'message'=>$msg]);
     }
@@ -620,6 +629,7 @@ class DocumentCreateForm extends Component
         $this->clearFormCustomer();
         $this->dispatchBrowserEvent('response_success_customer_store', ['idperson'=>$customer->id,'nameperson'=>($customer->number.' - '.$customer->trade_name),'message' => Lang::get('messages.successfully_registered')]);
     }
+
     public function clearFormCustomer(){
         $this->identity_document_type_id = 1;
         $this->number_id = null;

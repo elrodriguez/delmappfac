@@ -1,5 +1,8 @@
 @php
 //dd($document);
+//foreach ($document->items as $row){
+//    dd(json_decode($row->item, true));
+//}
     $invoice = $document->invoice->first();
     $establishment = json_decode($document->establishment);
     $customer = json_decode($document->customer);
@@ -229,7 +232,7 @@
     </cac:AllowanceCharge>
     @endif
     <cac:TaxTotal>
-        <cbc:TaxAmount currencyID="{{ $document->currency_type_id }}">{{ $document->total_taxes }}</cbc:TaxAmount>
+        <cbc:TaxAmount currencyID="{{ $document->currency_type_id }}">{{ $document->total_igv }}</cbc:TaxAmount>
         @if($document->total_isc > 0)
         <cac:TaxSubtotal>
             <cbc:TaxableAmount currencyID="{{ $document->currency_type_id }}">{{ $document->total_base_isc }}</cbc:TaxableAmount>
@@ -351,7 +354,7 @@
     @foreach($document->items as $row)
     <cac:InvoiceLine>
         <cbc:ID>{{ $loop->iteration }}</cbc:ID>
-        <cbc:InvoicedQuantity unitCode="{{ $row->unit_type_id }}">{{ $row->quantity }}</cbc:InvoicedQuantity>
+        <cbc:InvoicedQuantity unitCode="{{ json_decode($row->item, true)['unit_type_id'] }}" unitCodeListID="UN/ECE rec 20">{{ $row->quantity }}</cbc:InvoicedQuantity>
         <cbc:LineExtensionAmount currencyID="{{ $document->currency_type_id }}">{{ $row->total_value }}</cbc:LineExtensionAmount>
         <cac:PricingReference>
             <cac:AlternativeConditionPrice>
@@ -442,20 +445,20 @@
             @endif
         </cac:TaxTotal>
         <cac:Item>
-            <cbc:Description><![CDATA[{{ $row->description }}]]></cbc:Description>
-            @if($row->internal_id)
+            <cbc:Description><![CDATA[{{ json_decode($row->item, true)['description'] }}]]></cbc:Description>
+            @if(json_decode($row->item, true)['internal_id'])
             <cac:SellersItemIdentification>
-                <cbc:ID>{{ $row->internal_id }}</cbc:ID>
+                <cbc:ID>{{ json_decode($row->item, true)['internal_id'] }}</cbc:ID>
             </cac:SellersItemIdentification>
             @endif
-            @if($row->item_code)
+            @if(json_decode($row->item, true)['item_code'])
             <cac:CommodityClassification>
-                <cbc:ItemClassificationCode>{{ $row->item_code }}</cbc:ItemClassificationCode>
+                <cbc:ItemClassificationCode>{{ json_decode($row->item, true)['item_code'] }}</cbc:ItemClassificationCode>
             </cac:CommodityClassification>
             @endif
-            @if($row->item_code_gs1)
+            @if(json_decode($row->item, true)['item_code_gs1'])
             <cac:StandardItemIdentification>
-                <cbc:ID>{{ $row->item_code_gs1 }}</cbc:ID>
+                <cbc:ID>{{ json_decode($row->item, true)['item_code_gs1'] }}</cbc:ID>
             </cac:StandardItemIdentification>
             @endif
             @if($row->attributes)
