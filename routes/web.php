@@ -32,7 +32,7 @@ Route::group(['middleware' => ['auth:sanctum', 'verified','role:SuperAdmin|Admin
 
     Route::get('print/{model}/{external_id}/{format?}', [\App\Http\Controllers\Master\DocumentController::class, 'toPrintInvoice']);
 
-    Route::get('download/{domain}/{type}/{filename}', [\App\Http\Controllers\Master\DocumentController::class, 'downloadExternal'])->name('download_xml_document');
+    Route::get('download/{domain}/{type}/{filename}', [\App\Http\Controllers\Master\DocumentController::class, 'downloadExternal'])->name('download_sale_document');
 
     Route::middleware(['middleware' => 'role_or_permission:parametros'])->get('parameters', function () {
         return view('master.parameters');

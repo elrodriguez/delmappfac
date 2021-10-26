@@ -83,7 +83,7 @@
     <tr>
         <td width="120px">FECHA DE EMISIÓN</td>
         <td width="5px">:</td>
-        <td>{{ $document->date_of_issue->format('Y-m-d') }}</td>
+        <td>{{ $document->date_of_issue }}</td>
     </tr>
     <tr>
         <td>CLIENTE</td>
@@ -91,12 +91,13 @@
         <td>{{ $customer->name }}</td>
     </tr>
     <tr>
+        
         <td>{{ $identity_document_type->description }}</td>
         <td>:</td>
         <td>{{ $customer->number }}</td>
         {{--@isset($document->date_of_due)--}}
             {{--<td>Fecha de vencimiento:</td>--}}
-            {{--<td>{{ $document->date_of_due->format('Y-m-d') }}</td>--}}
+            {{--<td>{{ $document->date_of_due }}</td>--}}
         {{--@endisset--}}
     </tr>
 
@@ -111,6 +112,7 @@
                 {{ ($customer->province_id !== '-')? ', '.$customer_province->description : '' }}
                 {{ ($customer->department_id !== '-')? '- '.$customer_department->description : '' }}
             @endif
+            
         </td>
     </tr>
     @endif
@@ -151,6 +153,7 @@
         <td>{{ $document_base->note_description }}</td>
     </tr>
 </table>
+
 <table class="full-width mt-10 mb-10">
     <thead class="">
     <tr class="bg-grey">
@@ -163,6 +166,7 @@
     </tr>
     </thead>
     <tbody>
+        
     @foreach($document->items as $row)
         <tr>
             <td class="text-center">

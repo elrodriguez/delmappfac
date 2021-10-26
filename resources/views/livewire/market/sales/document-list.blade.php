@@ -86,7 +86,8 @@
                                     <a class="dropdown-item" href="{{ route('market_sales_note',$item->external_id) }}" ><i class="fal fa-file-invoice mr-1"></i>{{ __('messages.note') }}</a>
                                 @endcan
                                 <a class="dropdown-item" href="javascript:openPayments('{{ $item->id }}','{{ $item->series }} {{ str_pad($item->number, 8, "0", STR_PAD_LEFT) }}')" ><i class="fal fa-money-bill-wave mr-1"></i>{{ __('messages.payments') }}</a>
-                                <a class="dropdown-item" href="{{ route('download_xml_document',['academic','signed',$item->filename]) }}"><i class="fal fa-download mr-1"></i>XML</a>
+                                <a class="dropdown-item" href="{{ route('download_sale_document',['market','xml',$item->filename]) }}"><i class="fal fa-download mr-1"></i>XML</a>
+                                <a class="dropdown-item" href="{{ route('download_sale_document',['market','cdr','R-'.$item->filename]) }}"><i class="fal fa-download mr-1"></i>CDR</a>
                                 <a class="dropdown-item" href="javascript:void(0)" onclick="openModalPrint('{{ $item->external_id }}')"><i class="fal fa-print mr-1"></i>Imprimir</a>
                             </div>
                         </div>

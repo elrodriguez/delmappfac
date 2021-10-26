@@ -1,6 +1,6 @@
 @php
     $note = $document->note;
-    
+
     $establishment = json_decode($document->establishment);
     $customer = json_decode($document->customer);
 
@@ -31,7 +31,7 @@
     <cbc:UBLVersionID>2.1</cbc:UBLVersionID>
     <cbc:CustomizationID>2.0</cbc:CustomizationID>
     <cbc:ID>{{ $document->series }}-{{ $document->number }}</cbc:ID>
-    <cbc:IssueDate>{{ $document->date_of_issue->format('Y-m-d') }}</cbc:IssueDate>
+    <cbc:IssueDate>{{ $document->date_of_issue }}</cbc:IssueDate>
     <cbc:IssueTime>{{ $document->time_of_issue }}</cbc:IssueTime>
     @php
         $legend = json_decode($document->legends);

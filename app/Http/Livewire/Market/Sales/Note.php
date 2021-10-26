@@ -334,7 +334,8 @@ class Note extends Component
             'document_type_id' => 'required',
             'serie_id' => 'required',
             'f_issuance' => 'required',
-            'customer_id' => 'required'
+            'customer_id' => 'required',
+            'note_description' => 'required|max:255'
         ]);
 
 
@@ -435,10 +436,10 @@ class Note extends Component
             $billing->updateHash();
             $billing->updateQr();
             $billing->createPdf();
+            $billing->senderXmlSignedBill();
         } catch (Exception $e) {
             dd($e->getMessage());
         }
-        //$billing->senderXmlSignedBill();
 
         Serie::where('id',$this->serie_id)->increment('correlative');
 

@@ -66,7 +66,8 @@ class Document extends Model
         'query_status',
         'data_json',
         'used',
-        'module'
+        'module',
+        'soap_shipping_response'
     ];
 
     // protected $casts = [

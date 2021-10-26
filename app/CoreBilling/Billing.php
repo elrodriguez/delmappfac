@@ -230,7 +230,6 @@ class Billing
 
     public function updateState($state_type_id)
     {
-
         $this->document->update([
             'state_type_id' => $state_type_id,
             'soap_shipping_response' => isset($this->response['sent']) ? $this->response:null
@@ -592,7 +591,6 @@ class Billing
         } elseif ((int)$code < 4000) {
             //Rechazo
             $this->updateState(self::REJECTED);
-
         } else {
             $this->updateState(self::OBSERVED);
             //Observaciones
