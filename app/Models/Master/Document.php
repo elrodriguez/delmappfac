@@ -69,9 +69,9 @@ class Document extends Model
         'module'
     ];
 
-    protected $casts = [
-        'date_of_issue' => 'date',
-    ];
+    // protected $casts = [
+    //     'date_of_issue' => 'date',
+    // ];
 
     public function invoice()
     {

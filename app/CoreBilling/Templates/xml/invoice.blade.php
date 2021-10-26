@@ -1,4 +1,5 @@
 @php
+//dd($document);
     $invoice = $document->invoice->first();
     $establishment = json_decode($document->establishment);
     $customer = json_decode($document->customer);
@@ -83,7 +84,7 @@
                 <cbc:ID>{{ $company->number }}</cbc:ID>
             </cac:PartyIdentification>
             <cac:PartyName>
-                <cbc:Name><![CDATA[{{ $company->trade_name }}]]></cbc:Name>
+                <cbc:Name><![CDATA[{{ $company->tradename }}]]></cbc:Name>
             </cac:PartyName>
         </cac:SignatoryParty>
         <cac:DigitalSignatureAttachment>
@@ -98,7 +99,7 @@
                 <cbc:ID schemeID="6">{{ $company->number }}</cbc:ID>
             </cac:PartyIdentification>
             <cac:PartyName>
-                <cbc:Name><![CDATA[{{ $company->trade_name }}]]></cbc:Name>
+                <cbc:Name><![CDATA[{{ $company->tradename }}]]></cbc:Name>
             </cac:PartyName>
             <cac:PartyLegalEntity>
                 <cbc:RegistrationName><![CDATA[{{ $company->name }}]]></cbc:RegistrationName>
