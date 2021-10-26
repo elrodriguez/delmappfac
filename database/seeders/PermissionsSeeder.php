@@ -188,18 +188,18 @@ class PermissionsSeeder extends Seeder
         array_push($permissions_array,Permission::create(['name' => 'logistic_almacen_inventario_traslados']));
         array_push($permissions_array,Permission::create(['name' => 'logistic_almacen_inventario_traslados_nuevo']));
 
-        // Permission::create(['name' => 'market']);
-        // array_push($permissions_array,Permission::create(['name' => 'market_administration']));
-        // array_push($permissions_array,Permission::create(['name' => 'market_administration_caja_chica']));
-        // array_push($permissions_array,Permission::create(['name' => 'market_administration_caja_chica_cerrar']));
-        // array_push($permissions_array,Permission::create(['name' => 'ventas']));
-        // array_push($permissions_array,Permission::create(['name' => 'ventas_nuevo_comprobante']));
-        // array_push($permissions_array,Permission::create(['name' => 'ventas_lista_comprobantes']));
-        // array_push($permissions_array,Permission::create(['name' => 'market_ventas_documentos_nota']));
-        // array_push($permissions_array,Permission::create(['name' => 'market_reportes']));
-        // array_push($permissions_array,Permission::create(['name' => 'market_reportes_ventas_vendedor']));
-        // array_push($permissions_array,Permission::create(['name' => 'market_reportes_productos_mas_vendidos']));
-        // array_push($permissions_array,Permission::create(['name' => 'market_reportes_ventas_por_productos']));
+        Permission::create(['name' => 'market']);
+        array_push($permissions_array,Permission::create(['name' => 'market_administration']));
+        array_push($permissions_array,Permission::create(['name' => 'market_administration_caja_chica']));
+        array_push($permissions_array,Permission::create(['name' => 'market_administration_caja_chica_cerrar']));
+        array_push($permissions_array,Permission::create(['name' => 'ventas']));
+        array_push($permissions_array,Permission::create(['name' => 'ventas_nuevo_comprobante']));
+        array_push($permissions_array,Permission::create(['name' => 'ventas_lista_comprobantes']));
+        array_push($permissions_array,Permission::create(['name' => 'market_ventas_documentos_nota']));
+        array_push($permissions_array,Permission::create(['name' => 'market_reportes']));
+        array_push($permissions_array,Permission::create(['name' => 'market_reportes_ventas_vendedor']));
+        array_push($permissions_array,Permission::create(['name' => 'market_reportes_productos_mas_vendidos']));
+        array_push($permissions_array,Permission::create(['name' => 'market_reportes_ventas_por_productos']));
 
         // Permission::create(['name' => 'soporte_tecnico']);
         // array_push($permissions_array,Permission::create(['name' => 'soporte_tecnico_administracion']));
@@ -231,20 +231,20 @@ class PermissionsSeeder extends Seeder
         // array_push($permissions_array,Permission::create(['name' => 'soporte_tecnico_reportes_ruta_ticket']));
         // array_push($permissions_array,Permission::create(['name' => 'soporte_tecnico_reportes_ticket_por_usuario']));
         
-        // Permission::create(['name' => 'tienda_virtual']);
-        // array_push($permissions_array,Permission::create(['name' => 'tienda_virtual_administracion']));
-        // array_push($permissions_array,Permission::create(['name' => 'tienda_virtual_administracion_configuraciones']));
-        // array_push($permissions_array,Permission::create(['name' => 'tienda_virtual_administracion_promociones']));
-        // array_push($permissions_array,Permission::create(['name' => 'tienda_virtual_administracion_promociones_create']));
-        // array_push($permissions_array,Permission::create(['name' => 'tienda_virtual_administracion_promociones_edit']));
-        // array_push($permissions_array,Permission::create(['name' => 'tienda_virtual_administracion_promociones_items']));
-        // array_push($permissions_array,Permission::create(['name' => 'tienda_virtual_administracion_promociones_delete']));
-        // array_push($permissions_array,Permission::create(['name' => 'tienda_virtual_administracion_productos']));
-        // array_push($permissions_array,Permission::create(['name' => 'tienda_virtual_atencion']));
-        // array_push($permissions_array,Permission::create(['name' => 'tienda_virtual_atencion_mensajes']));
-        // array_push($permissions_array,Permission::create(['name' => 'tienda_virtual_atencion_pedidos']));
-        // array_push($permissions_array,Permission::create(['name' => 'tienda_virtual_atencion_mensajes_enviados']));
-        // array_push($permissions_array,Permission::create(['name' => 'tienda_virtual_atencion_mensajes_papelera']));
+        Permission::create(['name' => 'tienda_virtual']);
+        array_push($permissions_array,Permission::create(['name' => 'tienda_virtual_administracion']));
+        array_push($permissions_array,Permission::create(['name' => 'tienda_virtual_administracion_configuraciones']));
+        array_push($permissions_array,Permission::create(['name' => 'tienda_virtual_administracion_promociones']));
+        array_push($permissions_array,Permission::create(['name' => 'tienda_virtual_administracion_promociones_create']));
+        array_push($permissions_array,Permission::create(['name' => 'tienda_virtual_administracion_promociones_edit']));
+        array_push($permissions_array,Permission::create(['name' => 'tienda_virtual_administracion_promociones_items']));
+        array_push($permissions_array,Permission::create(['name' => 'tienda_virtual_administracion_promociones_delete']));
+        array_push($permissions_array,Permission::create(['name' => 'tienda_virtual_administracion_productos']));
+        array_push($permissions_array,Permission::create(['name' => 'tienda_virtual_atencion']));
+        array_push($permissions_array,Permission::create(['name' => 'tienda_virtual_atencion_mensajes']));
+        array_push($permissions_array,Permission::create(['name' => 'tienda_virtual_atencion_pedidos']));
+        array_push($permissions_array,Permission::create(['name' => 'tienda_virtual_atencion_mensajes_enviados']));
+        array_push($permissions_array,Permission::create(['name' => 'tienda_virtual_atencion_mensajes_papelera']));
         
         $permissions_normal = Permission::create(['name' => 'mis Equipos de trabajo']);
 
