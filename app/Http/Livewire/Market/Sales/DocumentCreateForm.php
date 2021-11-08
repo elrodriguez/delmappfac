@@ -140,10 +140,11 @@ class DocumentCreateForm extends Component
         if(count($this->box_items)>0){
 
             foreach($this->box_items as $key => $item){
-                if(is_numeric($item['quantity'])){
+                //if(is_numeric($item['quantity'])){
                     $data[$key] = $this->calculateRowItem($item);
-                }
+                //}
             }
+
             $this->box_items = $data;
             $this->calculateTotal();
             $this->payment_method_types[0]['amount'] = $this->total;
@@ -550,7 +551,14 @@ class DocumentCreateForm extends Component
 
         $data['unit_value'] = $unit_value;
 
-        $total_value_partial = $unit_value * $data['quantity'];
+        $quantity = 0;
+
+        if($data['quantity']){
+            $quantity = $data['quantity'];
+        }else{
+            $quantity = 0;
+        }
+        $total_value_partial = $unit_value * $quantity;
 
         $total_isc = 0;
         $total_other_taxes = 0;
@@ -591,7 +599,7 @@ class DocumentCreateForm extends Component
 
         //impuesto bolsa
         if(json_decode($data['item'])->has_plastic_bag_taxes){
-            $data['total_plastic_bag_taxes'] = number_format($data['quantity'] * $this->value_icbper, 2, '.', '');
+            $data['total_plastic_bag_taxes'] = number_format($quantity * $this->value_icbper, 2, '.', '');
         }
 
         return $data;
