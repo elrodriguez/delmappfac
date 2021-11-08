@@ -3,7 +3,7 @@
 namespace App\Http\Livewire\Logistics\Catalogs;
 
 use App\Http\Controllers\Master\UbigeoController;
-use App\Models\catalogue\IdentityDocumentType;
+use App\Models\Catalogue\IdentityDocumentType;
 use App\Models\Master\Person;
 use App\Models\Master\PersonTypeDetail;
 use App\Models\Master\Supplier;
