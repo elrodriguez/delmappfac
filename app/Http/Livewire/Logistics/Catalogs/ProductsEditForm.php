@@ -60,7 +60,7 @@ class ProductsEditForm extends Component
         $this->item_types = DB::table('item_types')->get();
         $this->brands = Brand::all();
         $this->categories = ItemCategory::where('state',true)
-            ->whereNull('item_category_id')
+            ->whereNotNull('item_category_id')
             ->get();
 
         return view('livewire.logistics.catalogs.products-edit-form');

@@ -37,7 +37,10 @@ class CreateUnitTypesTable extends Migration
             ['id' => 'HUR', 'active' => true, 'symbol' => null, 'description' => 'Hora'],
             ['id' => 'LBS', 'active' => false, 'symbol' => null, 'description' => 'Libras'],
             ['id' => 'TNP', 'active' => false, 'symbol' => null, 'description' => 'Tinapon'],
-            ['id' => 'M36', 'active' => false, 'symbol' => null, 'description' => 'Tonelada']
+            ['id' => 'M36', 'active' => false, 'symbol' => null, 'description' => 'Tonelada'],
+            ['id' => 'DZN', 'active' => true, 'symbol' => null, 'description' => 'Docena'],
+            ['id' => 'PK', 'active' => true, 'symbol' => null, 'description' => 'Paquete'],
+            ['id' => 'PR', 'active' => true, 'symbol' => null, 'description' => 'Par']
         ]);
     }
 
