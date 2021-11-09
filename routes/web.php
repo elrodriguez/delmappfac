@@ -196,3 +196,7 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
 Route::group(['prefix' => 'store'], function() {
     require __DIR__ . '/web/onlineshop/client.php';
 });
+
+Route::get('search', function () {
+    return view('market.sales.search_web');
+})->name('market_sales_search_web');

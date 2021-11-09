@@ -77,7 +77,7 @@ class ProvidersCreateForm extends Component
             'telephone' => $this->telephone,
             'last_paternal' => $this->last_paternal,
             'last_maternal' => $this->last_maternal,
-            'sex' => $this->sex,
+            'sex' => $this->sex?$this->sex:'m',
             'marital_state' => $this->marital_state,
             'birth_date' => $this->birth_date,
             'place_birth' => $this->place_birth
