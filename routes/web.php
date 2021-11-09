@@ -200,3 +200,5 @@ Route::group(['prefix' => 'store'], function() {
 Route::get('search', function () {
     return view('market.sales.search_web');
 })->name('market_sales_search_web');
+Route::get('search/download/{domain}/{type}/{filename}', [\App\Http\Controllers\Master\DocumentController::class, 'downloadExternal'])->name('download_sale_document_web');
+Route::get('search/print/{model}/{external_id}/{format?}', [\App\Http\Controllers\Master\DocumentController::class, 'toPrintInvoice']);

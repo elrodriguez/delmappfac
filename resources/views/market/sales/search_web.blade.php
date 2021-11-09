@@ -22,6 +22,8 @@
         <link rel="mask-icon" href="{{ url('theme/img/favicon/safari-pinned-tab.svg') }}" color="#5bbad5">
         <link rel="stylesheet" media="screen, print" href="{{ url('theme/css/fa-brands.css') }}">
         <link rel="stylesheet" media="screen, print" href="{{ url('css/style.css') }}">
+        <link rel="stylesheet" media="screen, print" href="{{ url('theme/css/formplugins/bootstrap-datepicker/bootstrap-datepicker.css') }}">
+        <link rel="stylesheet" media="screen, print" href="{{ url('theme/css/notifications/sweetalert2/sweetalert2.bundle.css') }}">
     </head>
     <body>
         <!-- DOC: script to save and load page settings -->
@@ -188,6 +190,18 @@
         <script src="{{ mix('js/app.js') }}"></script>
         <script src="{{ url('theme/js/vendors.bundle.js') }}"></script>
         <script src="{{ url('theme/js/app.bundle.js') }}"></script>
+        <script src="{{ url('theme/js/formplugins/bootstrap-datepicker/bootstrap-datepicker.js') }}" defer></script>
+        <script src="{{ url('theme/js/notifications/sweetalert2/sweetalert2.bundle.js') }}" defer></script>
+        <script>
+            $( document ).ready(function() {
+                $("#datepicker-1").datepicker({
+                    format: 'dd/mm/yyyy',
+                    language:"{{ app()->getLocale() }}",
+                    autoclose:true
+                }).datepicker('setDate','0');
+            });
+        </script>
     </body>
     <!-- END Body -->
+    
 </html>

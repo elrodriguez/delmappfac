@@ -28,7 +28,7 @@ class ProvidersEditForm extends Component
     public $telephone;
     public $ubigeo;
     public $country_id = 'PE';
-    public $sex = 1 ;
+    public $sex = 'm' ;
     public $place_birth = null;
     public $identity_document_types = [];
     public $countries = [];
