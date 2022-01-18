@@ -36,7 +36,7 @@ class ProductsController extends Controller
         $warehouse_id = Warehouse::where('establishment_id',Auth::user()->establishment_id)->first()->id;
         $search = $request->input('search');
         $items = Item::leftJoin('brands','items.brand_id','brands.id')
-            ->join('item_warehouses','item_warehouses.item_id','items.id')
+            ->leftJoin('item_warehouses','item_warehouses.item_id','items.id')
             ->select(
                 'items.id',
                 'items.internal_id',

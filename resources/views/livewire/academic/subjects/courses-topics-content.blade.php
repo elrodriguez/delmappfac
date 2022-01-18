@@ -97,7 +97,9 @@
                                                     <a href="javascript:void(0)" wire:click="deleteActivity('{{ $class_activitie->id }}')" data-toggle="tooltip" data-placement="right" title="" data-original-title="Eliminar"><i class="fal fa-trash-alt ml-2"></i></a>
                                                 </p>
                                                 <div class="video-responsive">
+                                                    @if($class_activitie->file)
                                                     {!! $class_activitie->file['body']['embed']['html'] !!}
+                                                    @endif
                                                 </div>
                                                 @break
                                             @case(7)
